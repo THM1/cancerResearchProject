@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7722E75117C9A5B900266D43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7722E75017C9A5B900266D43 /* UIKit.framework */; };
+		7722E75317C9A5B900266D43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7722E75217C9A5B900266D43 /* Foundation.framework */; };
+		7722E75517C9A5B900266D43 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7722E75417C9A5B900266D43 /* CoreGraphics.framework */; };
+		7722E75B17C9A5B900266D43 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7722E75917C9A5B900266D43 /* InfoPlist.strings */; };
+		7722E75D17C9A5B900266D43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7722E75C17C9A5B900266D43 /* main.m */; };
+		7722E76117C9A5B900266D43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7722E76017C9A5B900266D43 /* AppDelegate.m */; };
+		7722E76317C9A5B900266D43 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7722E76217C9A5B900266D43 /* Default.png */; };
+		7722E76517C9A5B900266D43 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7722E76417C9A5B900266D43 /* Default@2x.png */; };
+		7722E76717C9A5B900266D43 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7722E76617C9A5B900266D43 /* Default-568h@2x.png */; };
+		7722E76A17C9A5BA00266D43 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7722E76917C9A5BA00266D43 /* MasterViewController.m */; };
+		7722E76D17C9A5BA00266D43 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7722E76C17C9A5BA00266D43 /* DetailViewController.m */; };
+		7722E77017C9A5BA00266D43 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7722E76E17C9A5BA00266D43 /* MasterViewController.xib */; };
+		7722E77317C9A5BA00266D43 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7722E77117C9A5BA00266D43 /* DetailViewController.xib */; };
+		7722E77B17C9A5BA00266D43 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7722E77A17C9A5BA00266D43 /* SenTestingKit.framework */; };
+		7722E77C17C9A5BA00266D43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7722E75017C9A5B900266D43 /* UIKit.framework */; };
+		7722E77D17C9A5BA00266D43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7722E75217C9A5B900266D43 /* Foundation.framework */; };
+		7722E78517C9A5BA00266D43 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7722E78317C9A5BA00266D43 /* InfoPlist.strings */; };
+		7722E78817C9A5BA00266D43 /* cancerResearchProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7722E78717C9A5BA00266D43 /* cancerResearchProjectTests.m */; };
+		7722E79917C9A64400266D43 /* FactorAtLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 7722E79217C9A64400266D43 /* FactorAtLink.m */; };
+		7722E79A17C9A64400266D43 /* FactorFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 7722E79417C9A64400266D43 /* FactorFamily.m */; };
+		7722E79B17C9A64400266D43 /* GeneRegulationMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 7722E79617C9A64400266D43 /* GeneRegulationMap.m */; };
+		7722E79C17C9A64400266D43 /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 7722E79817C9A64400266D43 /* Link.m */; };
+		7722E7A017C9A69C00266D43 /* factor_graph.plain in Resources */ = {isa = PBXBuildFile; fileRef = 7722E79D17C9A69C00266D43 /* factor_graph.plain */; };
+		7722E7A117C9A69C00266D43 /* factor_info.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7722E79E17C9A69C00266D43 /* factor_info.txt */; };
+		7722E7A217C9A69C00266D43 /* regulation_graph.plain in Resources */ = {isa = PBXBuildFile; fileRef = 7722E79F17C9A69C00266D43 /* regulation_graph.plain */; };
+		7722E7A517C9A73400266D43 /* Stage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7722E7A417C9A73400266D43 /* Stage.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7722E77E17C9A5BA00266D43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7722E74517C9A5B900266D43 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7722E74C17C9A5B900266D43;
+			remoteInfo = cancerResearchProject;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7722E74D17C9A5B900266D43 /* cancerResearchProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cancerResearchProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7722E75017C9A5B900266D43 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7722E75217C9A5B900266D43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7722E75417C9A5B900266D43 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7722E75817C9A5B900266D43 /* cancerResearchProject-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cancerResearchProject-Info.plist"; sourceTree = "<group>"; };
+		7722E75A17C9A5B900266D43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7722E75C17C9A5B900266D43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7722E75E17C9A5B900266D43 /* cancerResearchProject-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cancerResearchProject-Prefix.pch"; sourceTree = "<group>"; };
+		7722E75F17C9A5B900266D43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7722E76017C9A5B900266D43 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7722E76217C9A5B900266D43 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		7722E76417C9A5B900266D43 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		7722E76617C9A5B900266D43 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7722E76817C9A5B900266D43 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		7722E76917C9A5BA00266D43 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		7722E76B17C9A5BA00266D43 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		7722E76C17C9A5BA00266D43 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		7722E76F17C9A5BA00266D43 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
+		7722E77217C9A5BA00266D43 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		7722E77917C9A5BA00266D43 /* cancerResearchProjectTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cancerResearchProjectTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7722E77A17C9A5BA00266D43 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		7722E78217C9A5BA00266D43 /* cancerResearchProjectTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cancerResearchProjectTests-Info.plist"; sourceTree = "<group>"; };
+		7722E78417C9A5BA00266D43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7722E78617C9A5BA00266D43 /* cancerResearchProjectTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cancerResearchProjectTests.h; sourceTree = "<group>"; };
+		7722E78717C9A5BA00266D43 /* cancerResearchProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cancerResearchProjectTests.m; sourceTree = "<group>"; };
+		7722E79117C9A64400266D43 /* FactorAtLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactorAtLink.h; sourceTree = "<group>"; };
+		7722E79217C9A64400266D43 /* FactorAtLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactorAtLink.m; sourceTree = "<group>"; };
+		7722E79317C9A64400266D43 /* FactorFamily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactorFamily.h; sourceTree = "<group>"; };
+		7722E79417C9A64400266D43 /* FactorFamily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactorFamily.m; sourceTree = "<group>"; };
+		7722E79517C9A64400266D43 /* GeneRegulationMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneRegulationMap.h; sourceTree = "<group>"; };
+		7722E79617C9A64400266D43 /* GeneRegulationMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneRegulationMap.m; sourceTree = "<group>"; };
+		7722E79717C9A64400266D43 /* Link.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Link.h; sourceTree = "<group>"; };
+		7722E79817C9A64400266D43 /* Link.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Link.m; sourceTree = "<group>"; };
+		7722E79D17C9A69C00266D43 /* factor_graph.plain */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = factor_graph.plain; sourceTree = "<group>"; };
+		7722E79E17C9A69C00266D43 /* factor_info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = factor_info.txt; sourceTree = "<group>"; };
+		7722E79F17C9A69C00266D43 /* regulation_graph.plain */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = regulation_graph.plain; sourceTree = "<group>"; };
+		7722E7A317C9A73400266D43 /* Stage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stage.h; sourceTree = "<group>"; };
+		7722E7A417C9A73400266D43 /* Stage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stage.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7722E74A17C9A5B900266D43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7722E75117C9A5B900266D43 /* UIKit.framework in Frameworks */,
+				7722E75317C9A5B900266D43 /* Foundation.framework in Frameworks */,
+				7722E75517C9A5B900266D43 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7722E77517C9A5BA00266D43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7722E77B17C9A5BA00266D43 /* SenTestingKit.framework in Frameworks */,
+				7722E77C17C9A5BA00266D43 /* UIKit.framework in Frameworks */,
+				7722E77D17C9A5BA00266D43 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7722E74417C9A5B900266D43 = {
+			isa = PBXGroup;
+			children = (
+				7722E75617C9A5B900266D43 /* cancerResearchProject */,
+				7722E78017C9A5BA00266D43 /* cancerResearchProjectTests */,
+				7722E74F17C9A5B900266D43 /* Frameworks */,
+				7722E74E17C9A5B900266D43 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7722E74E17C9A5B900266D43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7722E74D17C9A5B900266D43 /* cancerResearchProject.app */,
+				7722E77917C9A5BA00266D43 /* cancerResearchProjectTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7722E74F17C9A5B900266D43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7722E75017C9A5B900266D43 /* UIKit.framework */,
+				7722E75217C9A5B900266D43 /* Foundation.framework */,
+				7722E75417C9A5B900266D43 /* CoreGraphics.framework */,
+				7722E77A17C9A5BA00266D43 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7722E75617C9A5B900266D43 /* cancerResearchProject */ = {
+			isa = PBXGroup;
+			children = (
+				7722E75F17C9A5B900266D43 /* AppDelegate.h */,
+				7722E76017C9A5B900266D43 /* AppDelegate.m */,
+				7722E76817C9A5B900266D43 /* MasterViewController.h */,
+				7722E76917C9A5BA00266D43 /* MasterViewController.m */,
+				7722E76B17C9A5BA00266D43 /* DetailViewController.h */,
+				7722E76C17C9A5BA00266D43 /* DetailViewController.m */,
+				7722E76E17C9A5BA00266D43 /* MasterViewController.xib */,
+				7722E77117C9A5BA00266D43 /* DetailViewController.xib */,
+				7722E75717C9A5B900266D43 /* Supporting Files */,
+			);
+			path = cancerResearchProject;
+			sourceTree = "<group>";
+		};
+		7722E75717C9A5B900266D43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7722E79517C9A64400266D43 /* GeneRegulationMap.h */,
+				7722E79617C9A64400266D43 /* GeneRegulationMap.m */,
+				7722E79717C9A64400266D43 /* Link.h */,
+				7722E79817C9A64400266D43 /* Link.m */,
+				7722E7A317C9A73400266D43 /* Stage.h */,
+				7722E7A417C9A73400266D43 /* Stage.m */,
+				7722E79117C9A64400266D43 /* FactorAtLink.h */,
+				7722E79217C9A64400266D43 /* FactorAtLink.m */,
+				7722E79317C9A64400266D43 /* FactorFamily.h */,
+				7722E79417C9A64400266D43 /* FactorFamily.m */,
+				7722E79D17C9A69C00266D43 /* factor_graph.plain */,
+				7722E79E17C9A69C00266D43 /* factor_info.txt */,
+				7722E79F17C9A69C00266D43 /* regulation_graph.plain */,
+				7722E75817C9A5B900266D43 /* cancerResearchProject-Info.plist */,
+				7722E75917C9A5B900266D43 /* InfoPlist.strings */,
+				7722E75C17C9A5B900266D43 /* main.m */,
+				7722E75E17C9A5B900266D43 /* cancerResearchProject-Prefix.pch */,
+				7722E76217C9A5B900266D43 /* Default.png */,
+				7722E76417C9A5B900266D43 /* Default@2x.png */,
+				7722E76617C9A5B900266D43 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7722E78017C9A5BA00266D43 /* cancerResearchProjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				7722E78617C9A5BA00266D43 /* cancerResearchProjectTests.h */,
+				7722E78717C9A5BA00266D43 /* cancerResearchProjectTests.m */,
+				7722E78117C9A5BA00266D43 /* Supporting Files */,
+			);
+			path = cancerResearchProjectTests;
+			sourceTree = "<group>";
+		};
+		7722E78117C9A5BA00266D43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7722E78217C9A5BA00266D43 /* cancerResearchProjectTests-Info.plist */,
+				7722E78317C9A5BA00266D43 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7722E74C17C9A5B900266D43 /* cancerResearchProject */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7722E78B17C9A5BA00266D43 /* Build configuration list for PBXNativeTarget "cancerResearchProject" */;
+			buildPhases = (
+				7722E74917C9A5B900266D43 /* Sources */,
+				7722E74A17C9A5B900266D43 /* Frameworks */,
+				7722E74B17C9A5B900266D43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cancerResearchProject;
+			productName = cancerResearchProject;
+			productReference = 7722E74D17C9A5B900266D43 /* cancerResearchProject.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7722E77817C9A5BA00266D43 /* cancerResearchProjectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7722E78E17C9A5BA00266D43 /* Build configuration list for PBXNativeTarget "cancerResearchProjectTests" */;
+			buildPhases = (
+				7722E77417C9A5BA00266D43 /* Sources */,
+				7722E77517C9A5BA00266D43 /* Frameworks */,
+				7722E77617C9A5BA00266D43 /* Resources */,
+				7722E77717C9A5BA00266D43 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7722E77F17C9A5BA00266D43 /* PBXTargetDependency */,
+			);
+			name = cancerResearchProjectTests;
+			productName = cancerResearchProjectTests;
+			productReference = 7722E77917C9A5BA00266D43 /* cancerResearchProjectTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7722E74517C9A5B900266D43 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = THM;
+			};
+			buildConfigurationList = 7722E74817C9A5B900266D43 /* Build configuration list for PBXProject "cancerResearchProject" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7722E74417C9A5B900266D43;
+			productRefGroup = 7722E74E17C9A5B900266D43 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7722E74C17C9A5B900266D43 /* cancerResearchProject */,
+				7722E77817C9A5BA00266D43 /* cancerResearchProjectTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7722E74B17C9A5B900266D43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7722E75B17C9A5B900266D43 /* InfoPlist.strings in Resources */,
+				7722E76317C9A5B900266D43 /* Default.png in Resources */,
+				7722E76517C9A5B900266D43 /* Default@2x.png in Resources */,
+				7722E76717C9A5B900266D43 /* Default-568h@2x.png in Resources */,
+				7722E77017C9A5BA00266D43 /* MasterViewController.xib in Resources */,
+				7722E77317C9A5BA00266D43 /* DetailViewController.xib in Resources */,
+				7722E7A017C9A69C00266D43 /* factor_graph.plain in Resources */,
+				7722E7A117C9A69C00266D43 /* factor_info.txt in Resources */,
+				7722E7A217C9A69C00266D43 /* regulation_graph.plain in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7722E77617C9A5BA00266D43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7722E78517C9A5BA00266D43 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7722E77717C9A5BA00266D43 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7722E74917C9A5B900266D43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7722E75D17C9A5B900266D43 /* main.m in Sources */,
+				7722E76117C9A5B900266D43 /* AppDelegate.m in Sources */,
+				7722E76A17C9A5BA00266D43 /* MasterViewController.m in Sources */,
+				7722E76D17C9A5BA00266D43 /* DetailViewController.m in Sources */,
+				7722E79917C9A64400266D43 /* FactorAtLink.m in Sources */,
+				7722E79A17C9A64400266D43 /* FactorFamily.m in Sources */,
+				7722E79B17C9A64400266D43 /* GeneRegulationMap.m in Sources */,
+				7722E79C17C9A64400266D43 /* Link.m in Sources */,
+				7722E7A517C9A73400266D43 /* Stage.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7722E77417C9A5BA00266D43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7722E78817C9A5BA00266D43 /* cancerResearchProjectTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7722E77F17C9A5BA00266D43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7722E74C17C9A5B900266D43 /* cancerResearchProject */;
+			targetProxy = 7722E77E17C9A5BA00266D43 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7722E75917C9A5B900266D43 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7722E75A17C9A5B900266D43 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7722E76E17C9A5BA00266D43 /* MasterViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7722E76F17C9A5BA00266D43 /* en */,
+			);
+			name = MasterViewController.xib;
+			sourceTree = "<group>";
+		};
+		7722E77117C9A5BA00266D43 /* DetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7722E77217C9A5BA00266D43 /* en */,
+			);
+			name = DetailViewController.xib;
+			sourceTree = "<group>";
+		};
+		7722E78317C9A5BA00266D43 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7722E78417C9A5BA00266D43 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7722E78917C9A5BA00266D43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		7722E78A17C9A5BA00266D43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7722E78C17C9A5BA00266D43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cancerResearchProject/cancerResearchProject-Prefix.pch";
+				INFOPLIST_FILE = "cancerResearchProject/cancerResearchProject-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7722E78D17C9A5BA00266D43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cancerResearchProject/cancerResearchProject-Prefix.pch";
+				INFOPLIST_FILE = "cancerResearchProject/cancerResearchProject-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		7722E78F17C9A5BA00266D43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/cancerResearchProject.app/cancerResearchProject";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cancerResearchProject/cancerResearchProject-Prefix.pch";
+				INFOPLIST_FILE = "cancerResearchProjectTests/cancerResearchProjectTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		7722E79017C9A5BA00266D43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/cancerResearchProject.app/cancerResearchProject";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cancerResearchProject/cancerResearchProject-Prefix.pch";
+				INFOPLIST_FILE = "cancerResearchProjectTests/cancerResearchProjectTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7722E74817C9A5B900266D43 /* Build configuration list for PBXProject "cancerResearchProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7722E78917C9A5BA00266D43 /* Debug */,
+				7722E78A17C9A5BA00266D43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7722E78B17C9A5BA00266D43 /* Build configuration list for PBXNativeTarget "cancerResearchProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7722E78C17C9A5BA00266D43 /* Debug */,
+				7722E78D17C9A5BA00266D43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7722E78E17C9A5BA00266D43 /* Build configuration list for PBXNativeTarget "cancerResearchProjectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7722E78F17C9A5BA00266D43 /* Debug */,
+				7722E79017C9A5BA00266D43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7722E74517C9A5B900266D43 /* Project object */;
+}

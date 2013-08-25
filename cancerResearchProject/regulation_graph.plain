@@ -1,0 +1,15 @@
+graph 1 4.5417 5.5
+node MLP 2.3194 5.25 0.84854 0.5 MLP solid ellipse black lightgrey
+node CLP 2.3194 4.25 0.79437 0.5 CLP solid ellipse black lightgrey
+node Fr.A 1.1806 3.25 1.9318 0.5 "Fr.A" solid ellipse black lightgrey
+node T_cell 3.4722 3.25 2.1484 0.5 "T_cell" solid ellipse black lightgrey
+node Fr.B/C 1.1806 2.25 1.7332 0.5 "Fr.B/C" solid ellipse black lightgrey
+node Fr.C' 1.1806 1.25 2.3651 0.5 "Fr.C'" solid ellipse black lightgrey
+node Fr.D 1.1806 0.25 2.2567 0.5 "Fr.D" solid ellipse black lightgrey
+edge MLP CLP 4 2.3194 4.9958 2.3194 4.8886 2.3194 4.7599 2.3194 4.6405 solid black
+edge CLP Fr.A 4 2.0944 4.044 1.9409 3.913 1.7339 3.7362 1.5557 3.5841 solid black
+edge CLP T_cell 4 2.5472 4.044 2.7026 3.913 2.9122 3.7362 3.0925 3.5841 solid black
+edge Fr.A Fr.B/C 4 1.1806 2.9958 1.1806 2.8886 1.1806 2.7599 1.1806 2.6405 solid black
+edge Fr.B/C Fr.C' 4 1.1806 1.9958 1.1806 1.8886 1.1806 1.7599 1.1806 1.6405 solid black
+edge Fr.C' Fr.D 4 1.1806 0.99579 1.1806 0.88865 1.1806 0.7599 1.1806 0.64045 solid black
+stop
