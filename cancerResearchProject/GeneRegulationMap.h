@@ -30,12 +30,15 @@
     NSMutableArray* _links;             //! array of links
     NSMutableDictionary* _stagesList;   //! dictionary of stages with their names as keys
     NSMutableDictionary* _linksList;    //! dictionary of links with "previousStageName     nextStageName" as keys
+    
+    enum geneRegulationMapType _currentMap;
     //NSMutableDictionary* _factors;
 
 }
 
 -(GeneRegulationMap *)init;
--(void)drawGeneMapWithView: (UIView *)view;
+-(void)drawGeneMap:(enum geneRegulationMapType)mapType withView:(UIView *)view;
 
--(void)registerTouchAtPoint:(CGPoint)touchPos onView:(UIView *)view;
+-(void)registerTouchAtPoint:(CGPoint)touchPos forMap:(enum geneRegulationMapType)mapType onView:(UIView *)view;
+-(void)registerSwipeForMap:(enum geneRegulationMapType)mapType onView:(UIView *)view;
 @end

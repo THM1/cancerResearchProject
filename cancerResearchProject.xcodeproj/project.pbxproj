@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		771B139617CEF74500EF0782 /* factorFontKey.png in Resources */ = {isa = PBXBuildFile; fileRef = 771B139517CEF74500EF0782 /* factorFontKey.png */; };
 		7722E75117C9A5B900266D43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7722E75017C9A5B900266D43 /* UIKit.framework */; };
 		7722E75317C9A5B900266D43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7722E75217C9A5B900266D43 /* Foundation.framework */; };
 		7722E75517C9A5B900266D43 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7722E75417C9A5B900266D43 /* CoreGraphics.framework */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		771B139517CEF74500EF0782 /* factorFontKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = factorFontKey.png; sourceTree = "<group>"; };
 		7722E74D17C9A5B900266D43 /* cancerResearchProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cancerResearchProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7722E75017C9A5B900266D43 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7722E75217C9A5B900266D43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -174,6 +176,7 @@
 				7722E79F17C9A69C00266D43 /* regulation_graph.plain */,
 				7722E75817C9A5B900266D43 /* cancerResearchProject-Info.plist */,
 				7722E75917C9A5B900266D43 /* InfoPlist.strings */,
+				771B139517CEF74500EF0782 /* factorFontKey.png */,
 				7722E75C17C9A5B900266D43 /* main.m */,
 				7722E75E17C9A5B900266D43 /* cancerResearchProject-Prefix.pch */,
 				7722E76217C9A5B900266D43 /* Default.png */,
@@ -282,6 +285,7 @@
 				7722E7A017C9A69C00266D43 /* factor_graph.plain in Resources */,
 				7722E7A117C9A69C00266D43 /* factor_info.txt in Resources */,
 				7722E7A217C9A69C00266D43 /* regulation_graph.plain in Resources */,
+				771B139617CEF74500EF0782 /* factorFontKey.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +519,7 @@
 				7722E78D17C9A5BA00266D43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7722E78E17C9A5BA00266D43 /* Build configuration list for PBXNativeTarget "cancerResearchProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +528,7 @@
 				7722E79017C9A5BA00266D43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

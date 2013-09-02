@@ -12,8 +12,12 @@
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
 {
     GeneRegulationMap *_GRM;
+    NSArray *_mapNamesList;
+    enum geneRegulationMapType _currentMapType;
 }
 @property (strong, nonatomic) id detailItem;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fontColourPValueKey;
+@property (weak, nonatomic) IBOutlet UILabel *fontSizeOddsRatioKey;
+
 @end

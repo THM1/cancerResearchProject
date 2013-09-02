@@ -36,10 +36,27 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        self.fontColourPValueKey.text = @"pval";
+        self.fontSizeOddsRatioKey.text =@"odds ratio";
+    }
+
+    [self editNibNameToMapType:_currentMapType];
+
+    // clear the screen
+    for(int i=0; i<[self.view.subviews count]; i++){
+        [[self.view.subviews objectAtIndex:i] removeFromSuperview];
     }
     
-    [_GRM drawGeneMapWithView:self.view];
+    UIImageView *myView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"factorFontKey.png"]];
+    
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(0.0f, 800.0f);
+    myView.transform = transform;
+    myView.frame = CGRectMake(350.0f, 750.0f, 400, 50);
+    
+    [self.view addSubview:myView];
+    
+    [_GRM drawGeneMap:_currentMapType withView:self.view];
+
 }
 
 - (void)viewDidLoad
@@ -63,9 +80,47 @@
                                                  action:@selector(pinchRecognizer:)];
     
     [self.view addGestureRecognizer:pinchRecognizer];
+    
+    
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc]
+                                                 initWithTarget:self
+                                                 action:@selector(panRecognizer:)];
+    panRecognizer.minimumNumberOfTouches = 1;
+    
+    [self.view addGestureRecognizer:panRecognizer];
+    
+    
+    UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc]
+                                             initWithTarget:self
+                                             action:@selector(swipeRecognizer:)];
+    
+    [self.view addGestureRecognizer:swipeRecognizer];
 
 }
 
+-(void)swipeRecognizer: (UISwipeGestureRecognizer *)recognizer
+{
+    if(recognizer.state == UIGestureRecognizerStateEnded){
+        
+        if(_currentMapType == UP) _currentMapType = DOWN;
+        else _currentMapType = UP;
+        
+        [self editNibNameToMapType:_currentMapType];
+        [_GRM registerSwipeForMap:_currentMapType onView:self.view];
+    }
+}
+
+-(void)panRecognizer: (UIPanGestureRecognizer *)recognizer
+{
+    if(recognizer.state == UIGestureRecognizerStateEnded){
+        
+        if(_currentMapType == UP) _currentMapType = DOWN;
+        else _currentMapType = UP;
+        
+        [self editNibNameToMapType:_currentMapType];
+        [_GRM registerSwipeForMap:_currentMapType onView:self.view];
+    }
+}
 
 // function to modify camera zoom when user pinches screen
 -(void)pinchRecognizer: (UIPinchGestureRecognizer *)recognizer
@@ -80,7 +135,7 @@
 -(void) tapRecognizer: (UITapGestureRecognizer *) recognizer
 {
     CGPoint touch = [recognizer locationInView:self.view];
-    [_GRM registerTouchAtPoint:touch onView:self.view];
+    [_GRM registerTouchAtPoint:touch forMap:_currentMapType onView:self.view];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,11 +144,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)editNibNameToMapType:(enum geneRegulationMapType)mapType
+{
+    if(self){
+        self.title = _mapNamesList[mapType];
+    }
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Detail", @"Detail");
+        self.title = NSLocalizedString(@"Gene Regulation Map", @"Detail");
     }
     return self;
 }
@@ -116,7 +178,19 @@
 
 -(void)initialiseVariables
 {
+    
+    // initialise the map
     _GRM = [[GeneRegulationMap alloc] init];
+    
+    // ensure gene regulation map was initialised
+    assert(_GRM != nil);
+    
+    // initialise the map names
+    NSString *mapNames[2];
+    mapNames[0] = NSLocalizedString(@"Gene Regulation Map: Up-regulated", @"GRM_up");
+    mapNames[1] =  NSLocalizedString(@"Gene Regulation Map: Down-regulated", @"GRM_down");
+
+    _mapNamesList = [[NSArray alloc] initWithObjects:mapNames[0],mapNames[1], nil];
 }
 
 

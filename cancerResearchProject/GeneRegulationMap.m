@@ -61,17 +61,12 @@
     // place all words in an ordered list in an array (words are distinguished as being separated by white space characters or new line characters)
     NSArray *stagesInfoWordByWord = [stagesInfo componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
-    // initialise variables
-    //_stagesList = [[NSMutableDictionary alloc] init];
-    //_linksList = [[NSMutableDictionary alloc] init];
-    //_links = [[NSMutableArray alloc] init];
-    
     // counter for words in array
     unsigned int i=0;
 
     // check start of file is correct - should be the word "graph"
     if(![stagesInfoWordByWord[i++] isEqual: @"graph"]){
-        // incorrect file opened
+        // incorrect file opened so exit program
         NSLog(@"Incorrect File Type. Could not load gene regulation map");
         exit(1);
     }
@@ -113,8 +108,10 @@
             
             // create stage with above name and position and add to stages array
             Stage *newStage = [[Stage alloc] initWithName:stageName andPosition:pos];
+            
             [_stages addObject:newStage];
             [_stagesList setObject:newStage forKey:stageName];
+            
             // go to end of line (6 extra words for node information not required)
             i+=7;
         }
@@ -125,31 +122,19 @@
             NSString *prevStage = [stagesInfoWordByWord objectAtIndexedSubscript:i++];
             NSString *nextStage = [stagesInfoWordByWord objectAtIndexedSubscript:i++];
             
-            /*int *prevIndex=0, *nextIndex=0;
-            
-            // find the stages with the given names by searching in the stages array
-            for(int j=0; j<[_stages count]; j++){
-                if(![_stages[j] isEqualToString:prevStage]) *prevIndex=j;
-                if(![_stages[j] isEqualToString:nextStage]) *nextIndex=j;
-            }
-
-            // create link with above prev and next stages and add to links array
-            Link *newLink = [[Link alloc] initWithPrev:[_stages objectAtIndexedSubscript:*prevIndex] andNext:[_stages objectAtIndexedSubscript:*nextIndex]];*/
-            
             Link *newLink = [[Link alloc] initWithPrev:[_stagesList objectForKey:prevStage] andNext:[_stagesList objectForKey:nextStage]];
-            //Link *newLink = [[Link alloc] initWithPrev:[tempStages objectForKey:prevStage] andNext:[tempStages objectForKey:nextStage]];
 
+            // add the link to the array of links
             [_links addObject:newLink];
             
+            // create a name for the link in the format "previous stagename   next stage name" and add it to the linksList dictionary with that name as the key
             NSString *linkName = [[NSString alloc] initWithFormat:@"%@\t%@",prevStage,nextStage];
             [_linksList setObject:newLink forKey:linkName];
+            
             // go to end of line (11 extra words for node information not required)
             i+=11;
         }
     }
-    
-    //[stagesInfo dealloc];
-    //[stagesInfoWordByWord dealloc];
 }
 
 /**
@@ -164,10 +149,16 @@
  *
  * It has a static counter so that the map is only drawn once to the screen
  */
--(void)drawGeneMapWithView:(UIView *)view
+-(void)drawGeneMap:(enum geneRegulationMapType)mapType withView:(UIView *)view
 {
     static int count = 0;
-        
+    
+    /*
+    if(_currentMap != mapType){
+        count = 0;
+        _currentMap = mapType;
+    }*/
+    
     if(!count){
 
         unsigned int stageCount = [_stagesList count];
@@ -212,25 +203,30 @@
  * It modifies the view depending on the touch position. If no link was 
  * touched then no modification to the view is made
  */
--(void)registerTouchAtPoint:(CGPoint)touchPos onView:(UIView *)view
+-(void)registerTouchAtPoint:(CGPoint)touchPos forMap:(enum geneRegulationMapType)mapType onView:(UIView *)view
 {
     NSUInteger count = [_links count];
     
-    // loop through all link objects and check if a link was touched
+    // loop through all link objects to handle the touch if any were touched
     for(int i=0; i<count; i++){
         
         Link *tempLink = [_links objectAtIndexedSubscript:i];
         
-        // check if above link was touched
-        BOOL touched = [tempLink checkTouched:touchPos];
+        // call the method that handles touch for each link
+        [tempLink handleTouch:touchPos withMapType:mapType onView:view];
+    }
+}
+
+-(void)registerSwipeForMap:(enum geneRegulationMapType)mapType onView:(UIView *)view
+{
+    NSUInteger count = [_links count];
+    
+    // loop through all link objects calling the method that handles swipe so they can change the factors displayed accordingly
+    for(int i=0; i<count; i++){
+        Link *tempLink = [_links objectAtIndexedSubscript:i];
         
-        // if touched call the displayFactors function to display the factor map
-        // for the touched link or to remove the factor map from the display if it
-        // already on the display
-        if(touched){
-            [tempLink displayFactors:view];
-            return;
-        }
+        // call the method that handles swipe for each link
+        [tempLink handleSwipeForMap:mapType onView:view];
     }
 }
 @end

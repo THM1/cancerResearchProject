@@ -15,25 +15,36 @@
 #import "Link.h"
 
 static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor families involved in the regulation maps
-@interface Link()
 
+@interface Link()
+// initialise class variables
 -(void)initialiseVariables;
 
--(void)loadFactorFamilyData;
--(void) loadFactorData;
-
--(void)loadFactorLabels;
--(NSArray *)loadFactorLabelsForArray:(NSArray *)array;
-
+// helpers for setting getting class variables
 -(void)setPosition;
-
+-(void)getPos:(float *)pos;
 -(void)setPreviousStage:(Stage *)prev;
 -(void)setNextStage:(Stage *)next;
 
+// helpers for creating the labels for the factors at this link
+-(void)loadFactorLabels;
+-(NSArray *)loadFactorLabelsForArray:(NSArray *)array;
+
+// helpers for loading the data from the text files on initialisation
+-(void)loadFactorFamilyData;
+-(void) loadFactorData;
+
+// helper that creates the arrow image for this link
 -(UIImageView *)loadArrow:(UIView *)view;
 
--(void)displayFactorsHelper:(UIView *)view;
--(void)hideFactorsHelper:(UIView *)view;
+// helper functions for handling touch
+-(BOOL)checkTouchedLabel:(CGPoint)touchPos forMapType:(enum geneRegulationMapType)mapType;  // label touched
+-(BOOL)checkTouched:(CGPoint)touchPos;                                                      // arrow touched
+
+// helpers for displaying and hiding the labels when a touch is registered
+-(void)displayFactorsHelper:(enum geneRegulationMapType)mapType onView:(UIView *)view;
+-(void)displayFactors:(enum geneRegulationMapType)mapType onView:(UIView *)view;
+-(void)hideFactorsHelper:(enum geneRegulationMapType)mapType onView:(UIView *)view;
 
 @end
 
@@ -447,16 +458,36 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
  */
 -(UIImageView *)getArrow:(UIView *)view
 {
-    // Initialise
+    // Initialise only once, and load the arrow information only once
     if(_arrowImage == nil){
         _arrowImage = [[UIImageView alloc] init];
         _arrowImage = [self loadArrow:view];
     }
     
+    // Then (or otherwise) return the stored arrow image
     return _arrowImage;
     
 }
 
+-(BOOL)checkTouchedLabel:(CGPoint)touchPos forMapType:(enum geneRegulationMapType)mapType
+{
+    // loop through all labels at this link to see if they were selected
+    for(int i=0; i<_factorLabels[mapType].count; i++){
+        
+        // extract label at each iteration
+        UILabel *label = [_factorLabels[mapType] objectAtIndex:i];
+        
+        // check if the touch position was inside the label's frame
+        BOOL labelSelected = CGRectContainsPoint(label.frame, touchPos);
+        
+        // if so then modify the label as required
+        if(labelSelected){
+            label.backgroundColor = [UIColor blueColor];
+            return true;
+        }
+    }
+    return false;
+}
 
 /**
  * Function that checks if the touch position corresponds
@@ -468,6 +499,7 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
  */
 -(BOOL)checkTouched:(CGPoint)touchPos
 {
+
     CGPoint prev = [_prev getCGPoint];
     CGPoint next = [_next getCGPoint];
     
@@ -495,14 +527,14 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
 /**
  * Helper function for displaying the factors at this link
  */
--(void)displayFactorsHelper:(UIView *)view
+-(void)displayFactorsHelper:(enum geneRegulationMapType)mapType onView:(UIView *)view
 {
-    NSUInteger factorCount = _factorLabels[UP].count;
+    NSUInteger factorCount = _factorLabels[mapType].count;
 
     // loop through array of factors and display them to the view
     for(int i=0; i<factorCount; i++){
         
-        [view addSubview:[_factorLabels[UP] objectAtIndexedSubscript:i]];
+        [view addSubview:[_factorLabels[mapType] objectAtIndexedSubscript:i]];
         
     }
 }
@@ -510,15 +542,15 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
 /**
  * Helper function for hiding the factors at this link
  */
--(void)hideFactorsHelper:(UIView *)view
+-(void)hideFactorsHelper:(enum geneRegulationMapType)mapType onView:(UIView *)view
 {
-    int factorCount = _factorLabels[UP].count;
+    int factorCount = _factorLabels[mapType].count;
 
     // loop through array of factors and remove them from the current view
     for(int i=0; i<factorCount; i++){
         
         // get index of the UILabels in the subview array
-        NSUInteger x = [view.subviews indexOfObject:[_factorLabels[0] objectAtIndexedSubscript:i]];
+        NSUInteger x = [view.subviews indexOfObject:[_factorLabels[mapType] objectAtIndexedSubscript:i]];
         
         // if the label is not a subview of the view then return
         if(x == NSNotFound) return;
@@ -534,18 +566,18 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
  * Function that displays or hides factors from the screen
  * using helper functions depending on the touch flag being toggled
  */
--(void)displayFactors:(UIView *)view
+-(void)displayFactors:(enum geneRegulationMapType)mapType onView:(UIView *)view
 {
     
-    static BOOL prevTouchFlag = false;  //< static variable to compare previous data with new, to see if there has been any touch stimuli
+    static BOOL prevTouchFlag = false;  // static variable to compare previous data with new, to see if there has been any touch stimuli
     
     // check if touch flag has been toggled
     
     // if toggled to true then display factors using helper function
-    if(prevTouchFlag != _touchFlag && prevTouchFlag == false) [self displayFactorsHelper:view];
+    if(prevTouchFlag != _touchFlag && prevTouchFlag == false) [self displayFactorsHelper:mapType onView:view];
     
     // if toggled to false then hide factors using helper function
-    else if(prevTouchFlag != _touchFlag && prevTouchFlag == true) [self hideFactorsHelper:view];
+    else if(prevTouchFlag != _touchFlag && prevTouchFlag == true) [self hideFactorsHelper:mapType onView:view];
     
     // set static touch flag to current touch flag
     prevTouchFlag = _touchFlag;
@@ -588,6 +620,7 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
         label.textColor = [tempFactor getColour];
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont systemFontOfSize:(int)[tempFactor getFontSize]];
+        label.backgroundColor = [UIColor clearColor];
         
         // add the label to the label array
         [labelArray addObject:label];
@@ -613,6 +646,51 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
     [_factorLabels[ALL] addObjectsFromArray:[self loadFactorLabelsForArray:[_factorData[ALL] allValues]]];
 
 }
+
+-(void)handleTouch:(CGPoint)touchPos withMapType:(enum geneRegulationMapType)mapType onView:(UIView *)view
+{
+    // if the factors map is on display then
+    // check if any of the factors have been selected
+    if(_touchFlag){
+        
+        BOOL labelTouched = [self checkTouchedLabel:touchPos forMapType:mapType];
+        
+        // if a label was touched then return
+        if(labelTouched) return;
+    }
+    
+    // if no label was touched then check if this link was touched
+    BOOL touched = [self checkTouched:touchPos];
+    
+    // if it was then display or hide factors accordingly
+    if(touched){
+        [self displayFactors:mapType onView:view];
+        return;
+    }
+    
+}
+
+-(void)handleSwipeForMap:(enum geneRegulationMapType)mapType onView:(UIView *)view
+{
+    int factorCount = _factorLabels[mapType].count;
+    
+    // loop through array of factors and remove them from the current view
+    for(int i=0; i<factorCount; i++){
+        
+        // get index of the UILabels in the subview array
+        NSUInteger x = [view.subviews indexOfObject:[_factorLabels[!mapType] objectAtIndexedSubscript:i]];
+        
+        // if the label is not a subview of the view then check other labels
+        if(x == NSNotFound) continue;
+        
+        // otherwise find that label and remove it from the main view
+        // and add the label of the current map type
+        [[view.subviews objectAtIndex:x] removeFromSuperview];
+        [view addSubview:[_factorLabels[mapType] objectAtIndexedSubscript:i]];
+    }
+}
+
+
 
 @end
 
