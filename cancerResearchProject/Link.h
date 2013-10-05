@@ -52,19 +52,19 @@ enum geneRegulationMapType {
 @interface Link : NSObject{
     Stage *_prev, *_next;
     float _pos[3];
-    BOOL _touchFlag;
+    BOOL _touchFlag, _prevTouchFlag;
     UIImageView *_arrowImage;
     
     NSMutableDictionary *_factorData[3];    // up, down, all
     NSMutableArray *_factorLabels[3];       // up, down, all
-
+    
 }
 
 -(Link *) initWithPrev:(Stage *)prev andNext:(Stage *)next;
 
 -(UIImageView *)getArrow:(UIView *)view;
 
--(void)handleTouch:(CGPoint)touchPos withMapType:(enum geneRegulationMapType)mapType onView:(UIView *)view;
+-(BOOL)handleTouch:(CGPoint)touchPos withMapType:(enum geneRegulationMapType)mapType onView:(UIView *)view;
 -(void)handleSwipeForMap:(enum geneRegulationMapType)mapType onView:(UIView *)view;
 
 @end

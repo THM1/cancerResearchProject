@@ -34,6 +34,13 @@
 		7722E7A117C9A69C00266D43 /* factor_info.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7722E79E17C9A69C00266D43 /* factor_info.txt */; };
 		7722E7A217C9A69C00266D43 /* regulation_graph.plain in Resources */ = {isa = PBXBuildFile; fileRef = 7722E79F17C9A69C00266D43 /* regulation_graph.plain */; };
 		7722E7A517C9A73400266D43 /* Stage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7722E7A417C9A73400266D43 /* Stage.m */; };
+		77CA39E917DFC6CD00AD60EC /* Processes.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA39E817DFC6CD00AD60EC /* Processes.m */; };
+		77CA39F017DFC83700AD60EC /* GOT_processes.plain in Resources */ = {isa = PBXBuildFile; fileRef = 77CA39EA17DFC83700AD60EC /* GOT_processes.plain */; };
+		77CA39F117DFC83700AD60EC /* GOT_first.plain in Resources */ = {isa = PBXBuildFile; fileRef = 77CA39EB17DFC83700AD60EC /* GOT_first.plain */; };
+		77CA39F217DFC83700AD60EC /* GOT_fifth.plain in Resources */ = {isa = PBXBuildFile; fileRef = 77CA39EC17DFC83700AD60EC /* GOT_fifth.plain */; };
+		77CA39F317DFC83700AD60EC /* GOT_fourth.plain in Resources */ = {isa = PBXBuildFile; fileRef = 77CA39ED17DFC83700AD60EC /* GOT_fourth.plain */; };
+		77CA39F517DFC83700AD60EC /* GOT_second.plain in Resources */ = {isa = PBXBuildFile; fileRef = 77CA39EF17DFC83700AD60EC /* GOT_second.plain */; };
+		77CA39F717DFD1F700AD60EC /* GOT_third.plain in Resources */ = {isa = PBXBuildFile; fileRef = 77CA39F617DFD1F700AD60EC /* GOT_third.plain */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +93,14 @@
 		7722E79F17C9A69C00266D43 /* regulation_graph.plain */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = regulation_graph.plain; sourceTree = "<group>"; };
 		7722E7A317C9A73400266D43 /* Stage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stage.h; sourceTree = "<group>"; };
 		7722E7A417C9A73400266D43 /* Stage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stage.m; sourceTree = "<group>"; };
+		77CA39E717DFC6CD00AD60EC /* Processes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processes.h; sourceTree = "<group>"; };
+		77CA39E817DFC6CD00AD60EC /* Processes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Processes.m; sourceTree = "<group>"; };
+		77CA39EA17DFC83700AD60EC /* GOT_processes.plain */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GOT_processes.plain; sourceTree = "<group>"; };
+		77CA39EB17DFC83700AD60EC /* GOT_first.plain */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GOT_first.plain; sourceTree = "<group>"; };
+		77CA39EC17DFC83700AD60EC /* GOT_fifth.plain */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GOT_fifth.plain; sourceTree = "<group>"; };
+		77CA39ED17DFC83700AD60EC /* GOT_fourth.plain */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GOT_fourth.plain; sourceTree = "<group>"; };
+		77CA39EF17DFC83700AD60EC /* GOT_second.plain */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GOT_second.plain; sourceTree = "<group>"; };
+		77CA39F617DFD1F700AD60EC /* GOT_third.plain */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GOT_third.plain; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +186,14 @@
 				7722E79217C9A64400266D43 /* FactorAtLink.m */,
 				7722E79317C9A64400266D43 /* FactorFamily.h */,
 				7722E79417C9A64400266D43 /* FactorFamily.m */,
+				77CA39E717DFC6CD00AD60EC /* Processes.h */,
+				77CA39E817DFC6CD00AD60EC /* Processes.m */,
+				77CA39EA17DFC83700AD60EC /* GOT_processes.plain */,
+				77CA39EB17DFC83700AD60EC /* GOT_first.plain */,
+				77CA39EC17DFC83700AD60EC /* GOT_fifth.plain */,
+				77CA39ED17DFC83700AD60EC /* GOT_fourth.plain */,
+				77CA39F617DFD1F700AD60EC /* GOT_third.plain */,
+				77CA39EF17DFC83700AD60EC /* GOT_second.plain */,
 				7722E79D17C9A69C00266D43 /* factor_graph.plain */,
 				7722E79E17C9A69C00266D43 /* factor_info.txt */,
 				7722E79F17C9A69C00266D43 /* regulation_graph.plain */,
@@ -286,6 +309,12 @@
 				7722E7A117C9A69C00266D43 /* factor_info.txt in Resources */,
 				7722E7A217C9A69C00266D43 /* regulation_graph.plain in Resources */,
 				771B139617CEF74500EF0782 /* factorFontKey.png in Resources */,
+				77CA39F017DFC83700AD60EC /* GOT_processes.plain in Resources */,
+				77CA39F117DFC83700AD60EC /* GOT_first.plain in Resources */,
+				77CA39F217DFC83700AD60EC /* GOT_fifth.plain in Resources */,
+				77CA39F317DFC83700AD60EC /* GOT_fourth.plain in Resources */,
+				77CA39F517DFC83700AD60EC /* GOT_second.plain in Resources */,
+				77CA39F717DFD1F700AD60EC /* GOT_third.plain in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +358,7 @@
 				7722E79B17C9A64400266D43 /* GeneRegulationMap.m in Sources */,
 				7722E79C17C9A64400266D43 /* Link.m in Sources */,
 				7722E7A517C9A73400266D43 /* Stage.m in Sources */,
+				77CA39E917DFC6CD00AD60EC /* Processes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,10 +477,12 @@
 		7722E78C17C9A5BA00266D43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kawther Abdall-Razak (5J27AH324P)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "cancerResearchProject/cancerResearchProject-Prefix.pch";
 				INFOPLIST_FILE = "cancerResearchProject/cancerResearchProject-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "E0AD19FC-54A7-4927-B8A7-B743AF41B7C0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -458,10 +490,12 @@
 		7722E78D17C9A5BA00266D43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kawther Abdall-Razak (5J27AH324P)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "cancerResearchProject/cancerResearchProject-Prefix.pch";
 				INFOPLIST_FILE = "cancerResearchProject/cancerResearchProject-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "E0AD19FC-54A7-4927-B8A7-B743AF41B7C0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

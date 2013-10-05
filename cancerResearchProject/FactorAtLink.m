@@ -17,7 +17,10 @@
  * Initialises the pValue and oddsRatio of the object
  * Returns pointer to itself
  */
--(FactorAtLink *) initWithFactorFamily: (FactorFamily *)factorFam andPValue:(float *)pVal andOddsRatio: (float *)oddsRatio
+-(FactorAtLink *) initWithFactorFamily: (FactorFamily *)factorFam
+                             andPValue:(float *)pVal
+                          andOddsRatio: (float *)oddsRatio
+                             andNumber:(NSUInteger)i
 {
     // parent constructor
     self = [super initWithFactorFamily:factorFam];
@@ -25,9 +28,20 @@
     if(self){
         [self setPValue:pVal];
         [self setOddsRatio:oddsRatio];
+        [self setProcesses:i];
     }
 
     return self;
+}
+
+-(void)setProcesses:(NSUInteger)i
+{
+    if(i){
+        _processesAtLink = [[Processes alloc] initWithLinkNumber:i];
+    }
+    
+    else _processesAtLink = nil;
+
 }
 
 /**
@@ -52,13 +66,13 @@
 {
     UIColor *colour;
     
-    if(*pVal > 0.05f) colour = [UIColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f];
-    else if(*pVal > 10e-2) colour = [UIColor colorWithRed:0.4f green:0.4f blue:0.4f alpha:1.0f];
-    else if(*pVal > 10e-5) colour = [UIColor colorWithRed:0.6f green:0.6f blue:0.6f alpha:1.0f];
+    if(*pVal > 0.05f) colour = [UIColor colorWithRed:0.75f green:0.75f blue:0.75f alpha:1.0f];
+    else if(*pVal > 10e-2) colour = [UIColor colorWithRed:0.5f green:0.5f blue:0.5f alpha:1.0f];
+    else if(*pVal > 10e-5) colour = [UIColor colorWithRed:0.35f green:0.35f blue:0.35f alpha:1.0f];
     else if(*pVal > 10e-10) colour = [UIColor blackColor];
-    else if(*pVal > 10e-20) colour = [UIColor colorWithRed:1.0f green:0.8f blue:0.8f alpha:1.0f];
-    else if(*pVal > 10e-50) colour = [UIColor colorWithRed:1.0f green:0.6f blue:0.6f alpha:1.0f];
-    else if(*pVal > 10e-100) colour = [UIColor colorWithRed:1.0f green:0.4f blue:0.4f alpha:1.0f];
+    else if(*pVal > 10e-20) colour = [UIColor colorWithRed:0.39f green:0.0f blue:0.0f alpha:1.0f];
+    else if(*pVal > 10e-50) colour = [UIColor colorWithRed:0.64f green:0.0f blue:0.0f alpha:1.0f];
+    else if(*pVal > 10e-100) colour = [UIColor colorWithRed:0.82f green:0.0f blue:0.0f alpha:1.0f];
     else colour = [UIColor redColor];
 
     return colour;
@@ -110,6 +124,22 @@
     return label;
 }
 
+
+-(void)factorSelected:(UIView *)view
+{
+    [_processesAtLink displayTextBoxes:view];
+}
+
+-(BOOL)processSelected:(CGPoint)touch onView:(UIView *)view
+{
+    BOOL processSelected = [_processesAtLink selectedProcess:touch onView:view];
+    return processSelected;
+}
+
+-(void)deselect:(UIView *)view
+{
+    [_processesAtLink deselect:view];
+}
 @end
 
 

@@ -21,14 +21,18 @@
 
 #import <Foundation/Foundation.h>
 #import "FactorFamily.h"
+#import "Processes.h"
+
 
 @interface FactorAtLink : FactorFamily{
 @private
     float _pValue;       //! pValue of the factor, represented by the colour of it's label
     float _oddsRatio;    //! odds ratio of the factor, represented by the font size of it's label
+
+    Processes *_processesAtLink;
 }
 
--(FactorAtLink *) initWithFactorFamily: (FactorFamily *)factorFam andPValue:(float *)pVal andOddsRatio: (float *)oddsRatio;
+-(FactorAtLink *) initWithFactorFamily: (FactorFamily *)factorFam andPValue:(float *)pVal andOddsRatio: (float *)oddsRatio andNumber:(unsigned int)i;
 
 -(void) setPValue: (float *)pVal;
 -(void) setOddsRatio: (float *)oddsRatio;
@@ -36,5 +40,8 @@
 -(UIColor *)getColour;
 -(float)getFontSize;
 
+-(void)factorSelected:(UIView *)view;
+-(BOOL)processSelected:(CGPoint)touch onView:(UIView *)view;
+-(void)deselect:(UIView *)view;
 //-(UILabel *)getLabel;
 @end

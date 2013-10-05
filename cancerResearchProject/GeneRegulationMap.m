@@ -83,7 +83,7 @@
     
     // scale to screen size
     float positionScale[2];
-    positionScale[0]= MAX_X/width;
+    positionScale[0]= MAX_X/width * 0.8;
     positionScale[1] = MAX_Y/height;
     
     // next line of file
@@ -103,11 +103,12 @@
             
             // get stage position and scale x and y positions to size of screen
             float pos[2];
-            pos[0] = [[stagesInfoWordByWord objectAtIndexedSubscript:i++] floatValue] * positionScale[0];
+            pos[0] = [[stagesInfoWordByWord objectAtIndexedSubscript:i++] floatValue] * positionScale[0] + MAX_X * 0.1;
             pos[1] = MAX_Y - [[stagesInfoWordByWord objectAtIndexedSubscript:i++] floatValue] * positionScale[1];
             
             // create stage with above name and position and add to stages array
-            Stage *newStage = [[Stage alloc] initWithName:stageName andPosition:pos];
+            Stage *newStage = [[Stage alloc] initWithName:stageName
+                                              andPosition:pos];
             
             [_stages addObject:newStage];
             [_stagesList setObject:newStage forKey:stageName];
@@ -122,7 +123,8 @@
             NSString *prevStage = [stagesInfoWordByWord objectAtIndexedSubscript:i++];
             NSString *nextStage = [stagesInfoWordByWord objectAtIndexedSubscript:i++];
             
-            Link *newLink = [[Link alloc] initWithPrev:[_stagesList objectForKey:prevStage] andNext:[_stagesList objectForKey:nextStage]];
+            Link *newLink = [[Link alloc] initWithPrev:[_stagesList objectForKey:prevStage]
+                                               andNext:[_stagesList objectForKey:nextStage]];
 
             // add the link to the array of links
             [_links addObject:newLink];
@@ -213,7 +215,8 @@
         Link *tempLink = [_links objectAtIndexedSubscript:i];
         
         // call the method that handles touch for each link
-        [tempLink handleTouch:touchPos withMapType:mapType onView:view];
+        BOOL handled = [tempLink handleTouch:touchPos withMapType:mapType onView:view];
+        if(handled) return;
     }
 }
 

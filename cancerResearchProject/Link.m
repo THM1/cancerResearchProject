@@ -309,11 +309,15 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
             [_factorFamilies setObject:newFamily forKey:factorFamilyName];
         }
         
+        unsigned int lineNumber = 0;
+        if(![nextWord isEqualToString:@"all"]) lineNumber = (i%6) + i/6;
+        
         // create the factor object which has the details of the p value and odds ratio for the above factor family
         FactorAtLink* newFactor = [[FactorAtLink alloc]
                                    initWithFactorFamily:[_factorFamilies objectForKey:factorFamilyName]
                                    andPValue:&pVal
-                                   andOddsRatio:&oddsRatio];
+                                   andOddsRatio:&oddsRatio
+                                   andNumber:lineNumber];
         
         // add it to the correct map list - either the up regulated, down regulated, or all regulated map list
         if([nextWord isEqualToString:@"up"]){
@@ -469,8 +473,13 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
     
 }
 
--(BOOL)checkTouchedLabel:(CGPoint)touchPos forMapType:(enum geneRegulationMapType)mapType
+-(BOOL)checkTouchedLabel:(CGPoint)touchPos onView:(UIView *)view forMapType:(enum geneRegulationMapType)mapType
 {
+    static FactorAtLink *currentTouchedFactor = nil;
+    static UILabel *currentTouchedLabel = nil;
+    
+    NSArray *factors = _factorData[mapType].allValues;
+    
     // loop through all labels at this link to see if they were selected
     for(int i=0; i<_factorLabels[mapType].count; i++){
         
@@ -482,10 +491,40 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
         
         // if so then modify the label as required
         if(labelSelected){
-            label.backgroundColor = [UIColor blueColor];
+            
+            if(label != currentTouchedLabel){
+                label.backgroundColor = [UIColor colorWithRed:0.7f green:0.7f blue:0.7f alpha:0.8f];
+                
+                if(currentTouchedLabel != nil){
+                    currentTouchedLabel.backgroundColor = [UIColor clearColor];
+                    [currentTouchedFactor deselect:view];
+                }
+                
+                currentTouchedLabel = [_factorLabels[mapType] objectAtIndex:i];
+                currentTouchedFactor = [factors objectAtIndex:i];
+                
+                [currentTouchedFactor factorSelected:view];
+            }
+            
+            else{
+                label.backgroundColor = [UIColor clearColor];
+                [currentTouchedFactor deselect:view];
+                
+                currentTouchedLabel = nil;
+                currentTouchedFactor = nil;
+            }
+                        
             return true;
         }
     }
+    
+    
+    if(currentTouchedFactor != nil){
+        
+        BOOL processSelected = [currentTouchedFactor processSelected:touchPos onView:view];
+        return processSelected;
+    }
+    
     return false;
 }
 
@@ -569,18 +608,18 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
 -(void)displayFactors:(enum geneRegulationMapType)mapType onView:(UIView *)view
 {
     
-    static BOOL prevTouchFlag = false;  // static variable to compare previous data with new, to see if there has been any touch stimuli
+    //static BOOL prevTouchFlag = false;  // static variable to compare previous data with new, to see if there has been any touch stimuli
     
     // check if touch flag has been toggled
     
     // if toggled to true then display factors using helper function
-    if(prevTouchFlag != _touchFlag && prevTouchFlag == false) [self displayFactorsHelper:mapType onView:view];
+    if(_prevTouchFlag != _touchFlag && _prevTouchFlag == false) [self displayFactorsHelper:mapType onView:view];
     
     // if toggled to false then hide factors using helper function
-    else if(prevTouchFlag != _touchFlag && prevTouchFlag == true) [self hideFactorsHelper:mapType onView:view];
+    else if(_prevTouchFlag != _touchFlag && _prevTouchFlag == true) [self hideFactorsHelper:mapType onView:view];
     
     // set static touch flag to current touch flag
-    prevTouchFlag = _touchFlag;
+    _prevTouchFlag = _touchFlag;
 }
 
 
@@ -598,19 +637,26 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
     
     // location of the "_next" stage label is required for relative positioning of the factor labels
     CGPoint next = [_next getCGPoint];
+    CGPoint prev = [_prev getCGPoint];
     
+    // label pos is midway between the two stage positions (previous and next)
+    CGPoint labelPos = CGPointMake((next.x - prev.x)/2 + prev.x,
+                                   (next.y - prev.y)/2 + prev.y);
     for(int i=0; i<count; i++){
         
         FactorAtLink *tempFactor = [array objectAtIndexedSubscript:i];
         float tempPos[3];
         [tempFactor getRelativePos:tempPos];
         
-        // adjust relative position to actual position using the position of the next stage
-        if(next.x >= MAX_X/2) tempPos[0] = tempPos[0] + next.x;
-        else tempPos[0] = next.x - tempPos[0];
+        // adjust relative position to actual position using the midway position between prev and next stages
+
+        if(labelPos.x >= MAX_X/2) tempPos[0] = tempPos[0] + labelPos.x;
+        else tempPos[0] = labelPos.x - tempPos[0] - 20;
         
-        tempPos[1] = tempPos[1] + next.y - 130;
+        tempPos[1] = tempPos[1] + labelPos.y - 80;
+        
         CGRect factorRect = CGRectMake(tempPos[0], tempPos[1], 50, 20);
+        
         
         // create the label for each factor and modify colour and font size
         // by calling the factor's functions getColour and getFontSize
@@ -647,16 +693,16 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
 
 }
 
--(void)handleTouch:(CGPoint)touchPos withMapType:(enum geneRegulationMapType)mapType onView:(UIView *)view
+-(BOOL)handleTouch:(CGPoint)touchPos withMapType:(enum geneRegulationMapType)mapType onView:(UIView *)view
 {
     // if the factors map is on display then
     // check if any of the factors have been selected
     if(_touchFlag){
         
-        BOOL labelTouched = [self checkTouchedLabel:touchPos forMapType:mapType];
+        BOOL labelTouched = [self checkTouchedLabel:touchPos onView:(UIView *)view forMapType:mapType];
         
         // if a label was touched then return
-        if(labelTouched) return;
+        if(labelTouched) return true;
     }
     
     // if no label was touched then check if this link was touched
@@ -665,14 +711,17 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
     // if it was then display or hide factors accordingly
     if(touched){
         [self displayFactors:mapType onView:view];
-        return;
+        return true;
     }
+    
+    return false;
     
 }
 
 -(void)handleSwipeForMap:(enum geneRegulationMapType)mapType onView:(UIView *)view
 {
     int factorCount = _factorLabels[mapType].count;
+    NSArray *factors = [_factorData[!mapType] allValues];
     
     // loop through array of factors and remove them from the current view
     for(int i=0; i<factorCount; i++){
@@ -685,6 +734,7 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
         
         // otherwise find that label and remove it from the main view
         // and add the label of the current map type
+        [factors[i] deselect:view];
         [[view.subviews objectAtIndex:x] removeFromSuperview];
         [view addSubview:[_factorLabels[mapType] objectAtIndexedSubscript:i]];
     }

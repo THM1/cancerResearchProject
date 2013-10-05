@@ -75,7 +75,7 @@
 
 /**
  * Public function that creates and returns the label for this stage
- * with the input label size
+ * containing the stage name
  */
 -(UILabel *)getLabel
 {
