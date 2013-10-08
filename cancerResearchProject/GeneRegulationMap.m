@@ -104,7 +104,7 @@
             // get stage position and scale x and y positions to size of screen
             float pos[2];
             pos[0] = [[stagesInfoWordByWord objectAtIndexedSubscript:i++] floatValue] * positionScale[0] + MAX_X * 0.1;
-            pos[1] = MAX_Y - [[stagesInfoWordByWord objectAtIndexedSubscript:i++] floatValue] * positionScale[1];
+            pos[1] = MAX_Y - [[stagesInfoWordByWord objectAtIndexedSubscript:i++] floatValue] * positionScale[1] + MAX_Y*0.15;
             
             // create stage with above name and position and add to stages array
             Stage *newStage = [[Stage alloc] initWithName:stageName

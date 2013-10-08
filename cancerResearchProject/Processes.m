@@ -31,7 +31,7 @@ static NSMutableArray *_geneList[5];
         _processDetailsBox[i] = [[UITextView alloc] init];
         //_processDetailsBox[i].scrollEnabled = YES;
         
-        UITextView *detailsText = [[UITextView alloc] initWithFrame:CGRectMake(10, 10, 300, 100)];
+        UITextView *detailsText = [[UITextView alloc] initWithFrame:CGRectMake(10, 70, 300, 200)];
         
         NSMutableString *text = [[NSMutableString alloc] init];
         [text appendFormat:@"Genes involved in %@ \n\n", _processNames[i]];
@@ -40,13 +40,13 @@ static NSMutableArray *_geneList[5];
         detailsText.text = text;
         detailsText.clipsToBounds = YES;
         
-        [detailsText sizeToFit];
-        //detailsText.editable = NO;
+        //[detailsText sizeToFit];
+        detailsText.editable = NO;
         
         _processDetailsBox[i] = detailsText;
     }
     
-    _processBox = [[UITextView alloc] initWithFrame:CGRectMake(500, 10, 300, 100)];
+    _processBox = [[UITextView alloc] initWithFrame:CGRectMake(500, 70, 300, 100)];
     
     
     float ypos = 0;
@@ -56,7 +56,7 @@ static NSMutableArray *_geneList[5];
         UILabel *label = [[UILabel alloc] init];
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;
-        label.font = [UIFont fontWithName:@"Verdana" size:10.0f];
+        label.font = [UIFont fontWithName:@"Verdana" size:14.0f];
         label.opaque = NO;
         
         label.text = _processNames[i];

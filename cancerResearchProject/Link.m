@@ -38,13 +38,16 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
 -(UIImageView *)loadArrow:(UIView *)view;
 
 // helper functions for handling touch
--(BOOL)checkTouchedLabel:(CGPoint)touchPos forMapType:(enum geneRegulationMapType)mapType;  // label touched
+//-(BOOL)checkTouchedLabel:(CGPoint)touchPos forMapType:(enum geneRegulationMapType)mapType;  // label touched
 -(BOOL)checkTouched:(CGPoint)touchPos;                                                      // arrow touched
 
 // helpers for displaying and hiding the labels when a touch is registered
 -(void)displayFactorsHelper:(enum geneRegulationMapType)mapType onView:(UIView *)view;
 -(void)displayFactors:(enum geneRegulationMapType)mapType onView:(UIView *)view;
 -(void)hideFactorsHelper:(enum geneRegulationMapType)mapType onView:(UIView *)view;
+
+
+-(BOOL)checkTouchedLabel:(CGPoint)touchPos onView:(UIView *)view forMapType:(enum geneRegulationMapType)mapType;
 
 @end
 
@@ -584,6 +587,7 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
 -(void)hideFactorsHelper:(enum geneRegulationMapType)mapType onView:(UIView *)view
 {
     int factorCount = _factorLabels[mapType].count;
+    NSArray *factors = [_factorData[mapType] allValues];
 
     // loop through array of factors and remove them from the current view
     for(int i=0; i<factorCount; i++){
@@ -596,6 +600,7 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
         
         // otherwise find that label and remove it from the main view
         [[view.subviews objectAtIndex:x] removeFromSuperview];
+        [[factors objectAtIndex:i] deselect:view];
     }
     
     return;
@@ -667,7 +672,12 @@ static NSMutableDictionary *_factorFamilies; ///< Class Variable of the factor f
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont systemFontOfSize:(int)[tempFactor getFontSize]];
         label.backgroundColor = [UIColor clearColor];
+        [label sizeToFit];
         
+        [label setFrame:CGRectMake(label.frame.origin.x,
+                                   label.frame.origin.y,
+                                   MAX(label.frame.size.width, 50),
+                                   MAX(label.frame.size.height, 20))];
         // add the label to the label array
         [labelArray addObject:label];
     }

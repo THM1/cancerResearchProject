@@ -93,7 +93,7 @@
     else if(*oddsRatio > 1.5f) fontsize = 10.0f;
     else if(*oddsRatio > 1.1f) fontsize = 9.0f;
 
-    return fontsize;
+    return fontsize*1.2;
 }
 
 /**
